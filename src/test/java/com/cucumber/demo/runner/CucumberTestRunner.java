@@ -4,9 +4,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-        plugin = "pretty",
+        plugin = {"pretty", "html:target/reports/index.html","json:target/reports/testsReport.json"},
         monochrome = true,
-        tags = "@smoke",
         glue = "com.cucumber.demo",
         features = "src/test/resources/features")
 public class CucumberTestRunner extends AbstractTestNGCucumberTests {

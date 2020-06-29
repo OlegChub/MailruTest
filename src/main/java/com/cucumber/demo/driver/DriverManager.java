@@ -2,8 +2,12 @@ package com.cucumber.demo.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+import java.util.Iterator;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.chrome.ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY;
@@ -32,6 +36,21 @@ public class DriverManager {
 
     public static WebDriver getDriver() {
         return threadLocalDriver.get();
+    }
+
+    public static WebDriverWait getWebDriverWait(){
+        WebDriverWait wait= new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        return wait;
+    }
+
+    public static String pageSwitcher() {
+        Set<String> openPagesSet = getDriver().getWindowHandles();
+        Iterator<String> iterator = openPagesSet.iterator();
+        String newPage = null;
+        while(iterator.hasNext()){
+            newPage=iterator.next();
+        }
+        return newPage;
     }
 
     public static void quitDriver() {

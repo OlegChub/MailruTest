@@ -1,7 +1,8 @@
-Feature: As a user I want to get ability to read Documentation section
+Feature: As a user I want to get relevant links on my image search request
 
-  @smoke
-  Scenario: Documentation section should contain appropriate columns
-    Given the user opens Cucumber website
-    When the user clicks on the "Docs" section
-    Then there are 7 child menu items displayed
+  Scenario: Tags section should contain appropriate to image suggestions
+    Given the user opens Yandex website
+    When the user clicks on the "images" menu item
+    And the user chooses search by image function
+    And the user uploads image
+    Then at least, one tag from block contains "автокран"

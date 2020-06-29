@@ -3,6 +3,7 @@ package com.cucumber.demo.pages;
 import com.cucumber.demo.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -21,4 +22,8 @@ public abstract class BasePage {
     public List<String> getTextsFromWebElements(By by) {
         return findElements(by).stream().map(WebElement::getText).collect(toList());
     }
+    public void waitUntilElementIsPresent(By by){
+        DriverManager.getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
 }
