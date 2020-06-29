@@ -25,7 +25,7 @@ public class MenuSteps {
     }
 
     @When("the user clicks on the {string} menu item")
-    public void clickOnMenuItem(String menuItem){
+    public void clickOnMenuItem(String menuItem) {
         homePage.getMenuItem(menuItem).click();
         DriverManager.getDriver().switchTo().window(pageSwitcher());
     }
@@ -36,13 +36,15 @@ public class MenuSteps {
     }
 
     @And("the user uploads image")
-    public void uploadImage(){
+    public void uploadImage() {
         imagesPage.uploadImageToSearch();
     }
 
     @Then("at least, one tag from block contains {string}")
     public void relevantTagIsPresent(String imageContext) {
         imagesSearchResultsPage.waitUntilTagsArePresent();
-        assertThat(imagesSearchResultsPage.textIsInElementsList(imageContext)).isTrue();
+        assertThat(imagesSearchResultsPage.textIsInElementsList(imageContext))
+                .overridingErrorMessage("Relevant tag with '%s' is not displayed", imageContext)
+                .isTrue();
     }
 }
