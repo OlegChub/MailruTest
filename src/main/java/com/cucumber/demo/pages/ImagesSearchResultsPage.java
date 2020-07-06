@@ -16,7 +16,7 @@ public class ImagesSearchResultsPage extends BasePage {
     public boolean textIsInElementsList(String text) {
         List<String> listOfTagsText = getTextsFromWebElements(By.xpath(TAG_ELEMENT));
         for (String s : listOfTagsText) {
-            if (s.contains(text))
+            if (s.toLowerCase().contains(text.toLowerCase()))
                 return true;
         }
         return false;
