@@ -35,9 +35,9 @@ public class MenuSteps {
         imagesPage.getSearchByImageIco().click();
     }
 
-    @And("the user uploads image")
-    public void uploadImage() {
-        imagesPage.uploadImageToSearch();
+    @And("the user uploads image {string}")
+    public void uploadImage(String imageName) {
+        imagesPage.uploadImageToSearch(imageName);
     }
 
     @Then("at least, one tag from block contains {string}")

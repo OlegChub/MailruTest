@@ -45,12 +45,15 @@ public class DriverManager {
 
     public static String pageSwitcher() {
         Set<String> openPagesSet = getDriver().getWindowHandles();
-        Iterator<String> iterator = openPagesSet.iterator();
-        String newPage = null;
-        while(iterator.hasNext()){
-            newPage=iterator.next();
+        if(!openPagesSet.isEmpty()) {
+            Iterator<String> iterator = openPagesSet.iterator();
+            String newPage = null;
+            while (iterator.hasNext()) {
+                newPage = iterator.next();
+            }
+            return newPage;
         }
-        return newPage;
+        return null;
     }
 
     public static void quitDriver() {

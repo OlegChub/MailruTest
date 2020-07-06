@@ -9,7 +9,7 @@ import static java.lang.String.format;
 public class HomePage extends BasePage {
 
     private static final String YANDEX_HOME_URL = "https://yandex.ru/";
-    private static final String MENU_LINK_PATTERN = "//a[@data-id='%s']";
+    private static final String MENU_LINK_PATTERN = "//a[text()='%s']";
 
     public void openYandexHomePage() {
         DriverManager.getDriver().get(YANDEX_HOME_URL);

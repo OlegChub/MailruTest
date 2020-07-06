@@ -15,14 +15,10 @@ public class ImagesSearchResultsPage extends BasePage {
 
     public boolean textIsInElementsList(String text) {
         List<String> listOfTagsText = getTextsFromWebElements(By.xpath(TAG_ELEMENT));
-        boolean hasText = false;
-        for (int i = 0; i < listOfTagsText.size(); i++) {
-            if (listOfTagsText.get(i).contains(text)) {
-                hasText = true;
-                break;
-            }
+        for (String s : listOfTagsText) {
+            if (s.contains(text))
+                return true;
         }
-        return hasText;
+        return false;
     }
-
 }
